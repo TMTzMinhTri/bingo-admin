@@ -8,7 +8,7 @@ export const Api = {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    "Authorization": "Nb4k4GqQWR2Cacp3VTdQ"
+                    "Authorization": "phE3v_y5xUmAi8Y16RNL"
                 },
             })
                 .then((response) => response.json())
