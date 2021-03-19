@@ -1,0 +1,17 @@
+.top-bar {
+    width: 100%;
+    height: 66px;
+    background: linear-gradient($background-black, $background-states-black);
+    .top-bar__title {
+        position: fixed;
+        top: 0;
+        margin: 20px 30px 30px 40px;
+        padding: 0 50px;
+    }
+    .top-bar-feature{
+        display: flex;
+        div {
+            margin-left: auto;
+        }
+    }
+}

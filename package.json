@@ -8,8 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "antd": "^4.14.0",
+    "babel-plugin-import": "^1.13.3",
+    "classnames": "^2.2.6",
     "next": "10.0.9",
+    "next-plugin-antd-less": "^0.3.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "sass": "^1.32.8"
   }
 }
