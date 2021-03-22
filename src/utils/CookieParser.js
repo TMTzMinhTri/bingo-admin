@@ -1,0 +1,22 @@
+const CookiesParser = (cookies) =>
+  cookies.split(';').reduce((res, c) => {
+    const i = c.indexOf('=');
+    const key = c.substr(0, i).trim();
+    const val = c.substr(i + 1).trim();
+    try {
+      return Object.assign(res, { [key]: JSON.parse(val) });
+    } catch (error) {
+      return Object.assign(res, { [key]: val });
+    }
+  }, {});
+
+const getCookieFromCtx = (ctx, nameCookie) => {
+  const cookies = ctx?.req?.headers?.cookie || null;
+  if (!cookies || cookies == null) {
+    return null;
+  }
+  const CookiesCtx = CookiesParser(cookies);
+  return CookiesCtx[nameCookie];
+};
+
+export { getCookieFromCtx, CookiesParser };

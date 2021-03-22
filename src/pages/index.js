@@ -1,13 +1,26 @@
-import { Wrapper } from "../components/layout";
-import { ListStaffMember } from '../components/home/staffmember/listStaffMember'
-import { getCurrentUser } from "../api/authentication";
+import { ListStaffMember } from 'components/home/staffmember/listStaffMember'
+import { Wrapper } from "components/layout";
+import { doWithServerSide } from "services";
+import { withLogin } from 'HOC';
+
 import { Tabs } from 'antd';
 import { useState } from "react";
 
 const { TabPane } = Tabs;
 
-export default function Home() {
+
+export async function getServerSideProps(context) {
+  return doWithServerSide(context, () => {
+    return {
+      props: {},
+    }
+  })
+}
+
+
+function Home(props) {
   const [currentTab, setCurrentTab] = useState("staff_member")
+  console.log("tri", props)
   const tabs = [
     { name: "Staff member", key: "staff_member", component: <ListStaffMember currentTab={currentTab} /> },
     { name: "User permission", key: "user_permission", component: <div>user_permission</div> },
@@ -27,17 +40,5 @@ export default function Home() {
     </Wrapper>
   )
 }
-export async function getServerSideProps(context) {
-  const { object, error } = await getCurrentUser()
-  console.log(object)
-  if (error) {
-    return {
-      redirect: {
-        destination: '/login',
-      }
-    }
-  }
-  return {
-    props: {}
-  }
-}
+
+export default withLogin(Home)
