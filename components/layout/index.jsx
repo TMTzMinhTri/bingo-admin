@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
 import { useMemo } from "react";
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, MehOutlined } from '@ant-design/icons';
 
 import { SideBar } from "./sidebar";
 import { TopBar } from "./topBar";
@@ -8,11 +8,19 @@ import { TopBar } from "./topBar";
 const { Content, Footer } = Layout;
 
 export function Wrapper({ children }) {
-    const menus = useMemo(() => [{
-        name: "Home",
-        key: "home",
-        icon: <UserOutlined />
-    }], [])
+    const menus = useMemo(() => [
+        {
+            name: "Home",
+            key: "home",
+            icon: <UserOutlined />,
+            path: "/"
+        },        {
+            name: "Clients",
+            key: "clients",
+            icon: <MehOutlined />,
+            path: '/clients'
+        },
+    ], [])
 
     return <Layout className="wrapper">
         <SideBar menus={menus} />

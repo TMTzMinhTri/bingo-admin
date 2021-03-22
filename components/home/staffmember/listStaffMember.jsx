@@ -11,7 +11,6 @@ export function ListStaffMember({ currentTab }) {
     if (currentTab === "staff_member") {
       const { error, data } = await getListStaffMember()
       setListStaff(data)
-      console.log(data)
     }
   }, [currentTab])
 
